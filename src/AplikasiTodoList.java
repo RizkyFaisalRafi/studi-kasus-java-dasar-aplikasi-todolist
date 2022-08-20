@@ -6,8 +6,10 @@ public class AplikasiTodoList {
     public static java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     public static void main(String[] args) {
+//        testViewRemoveTodoList();
 
-        testViewShowTodoList();
+        viewShowTodoList();
+
     }
 
 
@@ -48,6 +50,26 @@ public class AplikasiTodoList {
         addTodoList("Empat");
         addTodoList("Lima");
         viewShowTodoList();
+    }
+    public static void testViewAddTodoList() {
+        addTodoList("Satu");
+        addTodoList("Dua");
+        addTodoList("Tiga");
+
+        viewAddTodoList();
+
+        showTodoList();
+    }
+    public static void testViewRemoveTodoList() {
+        addTodoList("Satu");
+        addTodoList("Dua");
+        addTodoList("Tiga");
+
+        showTodoList();
+
+        viewRemoveTodoList();
+
+        showTodoList();
     }
 
 
@@ -147,17 +169,32 @@ public class AplikasiTodoList {
             }
         }
 
-
     }
 
     // Menampilkan View Menambahkan Todo List
     public static void viewAddTodoList() {
-
+        System.out.println("Menambah Todo List");
+        var todo = input("Todo (x jika batal)");
+        if (todo.equals("x")) {
+            // batal
+        } else {
+            addTodoList(todo);
+        }
     }
 
     // Menampilkan View Menghapus TodoList
     public static void viewRemoveTodoList() {
+        System.out.println("Menghapus Todo List");
+        var number = input("Nomor Yang Dihapus (x jika batal)");
 
+        if (number.equals("x")) {
+            // Batal
+        } else {
+            boolean success = removeTodoList(Integer.valueOf(number)); // Konversi String to Integer
+            if (!success) {
+                System.out.println("Gagal Menghapus Todo List : " + number);
+            }
+        }
     }
 
 }
